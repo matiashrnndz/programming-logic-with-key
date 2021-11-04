@@ -1,3 +1,5 @@
+package com.key;
+
 public class LinearSearch {
   /*@ public normal_behavior
     @ ensures 0 <= \result ==> \result < a.length && a[\result] == key;
