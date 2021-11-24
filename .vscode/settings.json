@@ -1,3 +1,31 @@
 {
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "punctuation.definition.comment.java",
+          "comment.block.java",
+          "comment.block.java keyword.other",
+          "comment.block.java keyword.operator.comparison.java",
+          "comment.block.java variable.other.object.property.java",
+          "comment.block.java keyword.operator.logical.java",
+          "comment.block.java punctuation.separator.period.java",
+          "comment.block.java variable.other.object.java",
+          "comment.block.java storage.type",
+          "comment.block.java constant.language.java",
+          "comment.block.java constant.numeric.decimal.java",
+          "comment.block.java keyword.operator.arithmetic.java",
+          "comment.block.java variable.other.definition.java",
+          "comment.block.java punctuation.separator.delimiter.java",
+          "comment.block.java storage.type.primitive.java"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#1dc582"
+        }
+      }
+    ]
+  }
 }
