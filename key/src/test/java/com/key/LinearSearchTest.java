@@ -27,5 +27,4 @@ public class LinearSearchTest {
     int index = LinearSearch.linearSearch(elems, key);
     assert(index == -1);
   }
-
 }
