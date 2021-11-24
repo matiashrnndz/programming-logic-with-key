@@ -3,9 +3,13 @@
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
+        "name": "Comment",
         "scope": [
           "comment",
           "punctuation.definition.comment.java",
+          "comment.block.documentation",
+          "comment.line",
+          "comment.line.double-slash",
           "comment.block.java",
           "comment.block.java keyword.other",
           "comment.block.java keyword.operator.comparison.java",
@@ -22,8 +26,8 @@
           "comment.block.java storage.type.primitive.java"
         ],
         "settings": {
-          "fontStyle": "italic",
-          "foreground": "#1dc582"
+          "fontStyle": "",
+          "foreground": "#ffffa3"
         }
       }
     ]
