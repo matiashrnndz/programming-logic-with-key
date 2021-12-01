@@ -23,7 +23,9 @@
           "comment.block.java keyword.operator.arithmetic.java",
           "comment.block.java variable.other.definition.java",
           "comment.block.java punctuation.separator.delimiter.java",
-          "comment.block.java storage.type.primitive.java"
+          "comment.block.java storage.type.primitive.java",
+          "comment.block.java entity.name.function.java",
+          "comment.block.java keyword.operator.assignment.java"
         ],
         "settings": {
           "fontStyle": "",
