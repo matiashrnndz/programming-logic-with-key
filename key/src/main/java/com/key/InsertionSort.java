@@ -14,15 +14,13 @@ public class InsertionSort {
     @ assignable a[*];
     @*/
   public void insertionSort() {
-    int i = 1;
     /*@ loop_invariant 1 <= i && i <= a.length;
       @ loop_invariant (\forall int m, n; 0 <= m && m <= n && n < a.length && n <= i-1; a[m] <= a[n]);
       @ loop_invariant \dl_seqPerm(seqa, \old(seqa));
       @ assignable a[*];
       @ decreases a.length - i;
       @*/
-    while (i < a.length) {
-      int j = i;
+    for (int i = 1; i < a.length; i++) {
       /*@ loop_invariant 1 <= i && i <= a.length-1;
         @ loop_invariant 0 <= j && j <= i;
         @ loop_invariant (\forall int m, n; 0 <= m && m < n && n < i+1 && n != j; a[m] <= a[n]);
@@ -30,13 +28,11 @@ public class InsertionSort {
         @ assignable a[*];
         @ decreases j;
         @*/
-      while(j > 0 && a[j-1] > a[j]) {
-        int temp = a[j];
+      for (int j = i; j > 0 && a[j-1] > a[j]; j--) {
+        int oldaj = a[j];
         a[j] = a[j-1];
-        a[j-1] = temp;
-        j--;
+        a[j-1] = oldaj;
       }
-      i++;
     }
   }
 }

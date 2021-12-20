@@ -1,6 +1,7 @@
 package com.key;
 
 public class BinarySearch {
+  
   /*@ public normal_behavior
     @ requires (\forall int i, j; 0 <= i && i <= j && j < a.length; a[i] <= a[j]);
     @ ensures \result >= 0 ==> \result < a.length && a[\result] == key;
@@ -8,8 +9,7 @@ public class BinarySearch {
     @ assignable \strictly_nothing;
     @*/
   public static int binarySearch(int[] a, int key) {
-    int low = 0;
-    int high = a.length;
+    int low = 0, high = a.length;
     /*@ loop_invariant 0 <= low && low <= high && high <= a.length;
       @ loop_invariant (\forall int k; 0 <= k && k < low; a[k] != key);
       @ loop_invariant (\forall int k; high <= k && k < a.length; a[k] != key);
