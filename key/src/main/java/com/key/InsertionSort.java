@@ -2,36 +2,36 @@ package com.key;
 
 public class InsertionSort {
 
-  public int[] a;
-  /*@ model \seq seqa;
-    @ represents seqa = \dl_array2seq(a);
+  public int[] arr;
+  /*@ model \seq seqarr;
+    @ represents seqarr = \dl_array2seq(arr);
     @*/
 
   /*@ public normal_behavior
-    @ requires a != null && a.length > 0;
-    @ ensures (\forall int m, n; 0 <= m && m <= n && n < a.length; a[m] <= a[n]);
-    @ ensures \dl_seqPerm(seqa, \old(seqa));
-    @ assignable a[*];
+    @ requires arr != null && arr.length > 0;
+    @ ensures (\forall int a, b; 0 <= a && a <= b && b < arr.length; arr[a] <= arr[b]);
+    @ ensures \dl_seqPerm(seqarr, \old(seqarr));
+    @ assignable arr[*];
     @*/
   public void insertionSort() {
-    /*@ loop_invariant 1 <= i && i <= a.length;
-      @ loop_invariant (\forall int m, n; 0 <= m && m <= n && n < a.length && n <= i-1; a[m] <= a[n]);
-      @ loop_invariant \dl_seqPerm(seqa, \old(seqa));
-      @ assignable a[*];
-      @ decreases a.length - i;
+    /*@ loop_invariant 1 <= i && i <= arr.length;
+      @ loop_invariant (\forall int a, b; 0 <= a && a <= b && b < arr.length && b <= i-1; arr[a] <= arr[b]);
+      @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
+      @ assignable arr[*];
+      @ decreases arr.length - i;
       @*/
-    for (int i = 1; i < a.length; i++) {
-      /*@ loop_invariant 1 <= i && i <= a.length-1;
+    for (int i = 1; i < arr.length; i++) {
+      /*@ loop_invariant 1 <= i && i <= arr.length-1;
         @ loop_invariant 0 <= j && j <= i;
-        @ loop_invariant (\forall int m, n; 0 <= m && m < n && n < i+1 && n != j; a[m] <= a[n]);
-        @ loop_invariant \dl_seqPerm(seqa, \old(seqa));
-        @ assignable a[*];
+        @ loop_invariant (\forall int a, b; 0 <= a && a < b && b < i+1 && b != j; arr[a] <= arr[b]);
+        @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
+        @ assignable arr[*];
         @ decreases j;
         @*/
-      for (int j = i; j > 0 && a[j-1] > a[j]; j--) {
-        int oldaj = a[j];
-        a[j] = a[j-1];
-        a[j-1] = oldaj;
+      for (int j = i; j > 0 && arr[j-1] > arr[j]; j--) {
+        int oldaj = arr[j];
+        arr[j] = arr[j-1];
+        arr[j-1] = oldaj;
       }
     }
   }

@@ -9,14 +9,14 @@ public class InsertionSortTest {
     int[] elems = {15, 7, 2, 12, 1};
     int[] expected = {1, 2, 7, 12, 15};
     InsertionSort is = new InsertionSort();
-    is.a = elems;
+    is.arr = elems;
     is.insertionSort();
     assert(
-      is.a[0] == expected[0] &&
-      is.a[1] == expected[1] &&
-      is.a[2] == expected[2] &&
-      is.a[3] == expected[3] &&
-      is.a[4] == expected[4]
+      is.arr[0] == expected[0] &&
+      is.arr[1] == expected[1] &&
+      is.arr[2] == expected[2] &&
+      is.arr[3] == expected[3] &&
+      is.arr[4] == expected[4]
     );
   }
 
@@ -25,14 +25,14 @@ public class InsertionSortTest {
     int[] elems = {15, 7, 2, 12, 7};
     int[] expected = {2, 7, 7, 12, 15};
     InsertionSort is = new InsertionSort();
-    is.a = elems;
+    is.arr = elems;
     is.insertionSort();
     assert(
-      is.a[0] == expected[0] &&
-      is.a[1] == expected[1] &&
-      is.a[2] == expected[2] &&
-      is.a[3] == expected[3] &&
-      is.a[4] == expected[4]
+      is.arr[0] == expected[0] &&
+      is.arr[1] == expected[1] &&
+      is.arr[2] == expected[2] &&
+      is.arr[3] == expected[3] &&
+      is.arr[4] == expected[4]
     );
   }
 }
