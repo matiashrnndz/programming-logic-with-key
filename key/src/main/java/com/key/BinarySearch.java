@@ -8,7 +8,7 @@ public class BinarySearch {
     @ ensures \result == -1 ==> (\forall int k; 0 <= k && k < arr.length; arr[k] != key);
     @ assignable \strictly_nothing;
     @*/
-  public static int binarySearch(int[] arr, int key) {
+  public int binarySearch(int[] arr, int key) {
     int low = 0, high = arr.length;
     /*@ loop_invariant 0 <= low && low <= high && high <= arr.length;
       @ loop_invariant (\forall int k; 0 <= k && k < low; arr[k] != key);

@@ -7,7 +7,7 @@ public class LinearSearch {
     @ ensures \result < 0 ==> (\forall int k; 0 <= k && k < arr.length; arr[k] != key);
     @ assignable \strictly_nothing;
     @*/
-  public static int linearSearch (int[] arr, int key) {
+  public int linearSearch (int[] arr, int key) {
     /*@ loop_invariant 0 <= i && i <= arr.length;
       @ loop_invariant (\forall int k; 0 <= k && k < i; arr[k] != key);
       @ assignable \strictly_nothing;

@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Test;
 
 public class LinearSearchTest {
 
+  private LinearSearch obj = new LinearSearch();
+
   @Test
   public void shouldFindKeyAtIndex5() {
     int[] elems = {1, 2, 7, 3, 9, 12, 54, 87, 47, 15};
     int key = 12;
-    int index = LinearSearch.linearSearch(elems, key);
+    int index = obj.linearSearch(elems, key);
     assert(index == 5);
   }
 
@@ -16,7 +18,7 @@ public class LinearSearchTest {
   public void shouldNotFindKey() {
     int[] elems = {1, 2, 7, 3, 9, 12, 54, 87, 47, 15};
     int key = 122;
-    int index = LinearSearch.linearSearch(elems, key);
+    int index = obj.linearSearch(elems, key);
     assert(index == -1);
   }
 
@@ -24,7 +26,7 @@ public class LinearSearchTest {
   public void shouldNotFindKeyForEmptyArray() {
     int[] elems = {};
     int key = 122;
-    int index = LinearSearch.linearSearch(elems, key);
+    int index = obj.linearSearch(elems, key);
     assert(index == -1);
   }
 }

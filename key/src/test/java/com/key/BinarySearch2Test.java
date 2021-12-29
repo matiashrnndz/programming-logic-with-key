@@ -2,15 +2,15 @@ package com.key;
 
 import org.junit.jupiter.api.Test;
 
-public class BinarySearchTest {
+public class BinarySearch2Test {
 
-  private BinarySearch obj = new BinarySearch();
+  private BinarySearch2 obj = new BinarySearch2();
 
   @Test
   public void shouldFindKeyAtIndex0() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 1;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 0);
   }
 
@@ -18,7 +18,7 @@ public class BinarySearchTest {
   public void shouldFindKeyAtIndex1() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 2;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 1);
   }
 
@@ -26,7 +26,7 @@ public class BinarySearchTest {
   public void shouldFindKeyAtIndex2() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 7;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 2);
   }
 
@@ -34,7 +34,7 @@ public class BinarySearchTest {
   public void shouldFindKeyAtIndex3() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 12;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 3);
   }
 
@@ -42,7 +42,7 @@ public class BinarySearchTest {
   public void shouldFindKeyAtIndex4() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 15;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 4);
   }
 
@@ -50,7 +50,7 @@ public class BinarySearchTest {
   public void shouldFindKeyAtIndex5() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 19;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == 5);
   }
 
@@ -58,7 +58,7 @@ public class BinarySearchTest {
   public void shouldNotFindKey() {
     int[] elems = {1, 2, 7, 12, 15, 19};
     int key = 122;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == -1);
   }
 
@@ -66,7 +66,7 @@ public class BinarySearchTest {
   public void shouldNotFindKeyForEmptyArray() {
     int[] elems = {};
     int key = 122;
-    int index = obj.binarySearch(elems, key);
+    int index = obj.binarySearch2(elems, key);
     assert(index == -1);
   }
 }
