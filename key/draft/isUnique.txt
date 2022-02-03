@@ -1,0 +1,45 @@
+import java.util.HashMap;
+
+  private HashMap<Character,Boolean> hashMap = new HashMap<Character,Boolean>() {{
+    put('A', false);
+    put('B', false);
+    put('C', false);
+    put('D', false);
+    put('E', false);
+    put('F', false);
+    put('G', false);
+    put('H', false);
+    put('I', false);
+    put('J', false);
+    put('K', false);
+    put('L', false);
+    put('M', false);
+    put('N', false);
+    put('O', false);
+    put('P', false);
+    put('Q', false);
+    put('R', false);
+    put('S', false);
+    put('T', false);
+    put('U', false);
+    put('V', false);
+    put('W', false);
+    put('X', false);
+    put('Y', false);
+    put('Z', false);
+  }};
+
+  public boolean is_unique(String s) {
+
+    for(int i=0; i<s.length(); i++) {
+
+      char c = s.charAt(i);
+      if (hashMap.get(c)) {
+        return false;
+      }
+
+      hashMap.put(c, true);
+    }
+
+    return true;
+  }

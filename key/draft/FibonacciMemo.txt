@@ -1,0 +1,38 @@
+package com.key;
+
+import java.util.*;
+
+public class FibonacciMemo {
+
+  /*@ model_behavior
+    @ requires n >= 0;
+    @ model int fib(int n) {
+    @   returns (n == 0 || n == 1) ? 1 : fib(n-1) + fib(n-2);
+    @ }
+    @*/
+
+  /*@ invariant memo_fib:
+    @ \forall int x, int y;
+    @ y != null && y == memo.M.acc(memo, x);
+    @ y.value == fib(x.value);
+    @*/
+  HashMap<Integer, Integer> memo = new HashMap<Integer, Integer>();
+
+  /*@ public normal_behavior
+    @ requires n >= 0;
+    @ ensures \result == fib(n);
+    @ assignable \strictly_nothing;
+    @ decreases n;
+    @*/
+  public int fib_memo(int n) {
+    if (n <= 1) {
+      return n;
+    }
+    Integer x = memo.get(n);
+    if (x == null) {
+      x = fib_memo(n-1) + fib_memo(n-2);
+      memo.put(n, x);
+    }
+    return x.intValue();
+  }
+}
