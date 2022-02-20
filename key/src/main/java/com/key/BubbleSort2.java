@@ -35,9 +35,6 @@ public class BubbleSort2 {
         @ loop_invariant (\forall int a, b;
         @                         i <= a && a <= b && b < n;
         @                         arr[a] <= arr[b]);
-        @ loop_invariant (\forall int a, b;
-        @                         0 <= a && a <= i && i < b && b < n;
-        @                         arr[a] <= arr[b]);
         @ loop_invariant (\forall int k;
         @                         0 <= k && k <= j;
         @                         arr[k] <= arr[j]);

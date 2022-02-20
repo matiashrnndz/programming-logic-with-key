@@ -5,7 +5,7 @@ public class Fibonacci {
   /*@ model_behavior
     @ requires n >= 0;
     @ model int fib(int n) {
-    @   returns (n == 0 || n == 1) ? 1 : fib(n-1) + fib(n-2);
+    @   return (n == 0 || n == 1) ? 1 : fib(n-1) + fib(n-2);
     @ }
     @*/
 
