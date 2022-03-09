@@ -1,6 +1,6 @@
 package com.key;
 
-public class IsUnique {
+public class IsUnique2 {
 
   public char[] s;
   /*@ model int n;
@@ -8,23 +8,17 @@ public class IsUnique {
     @*/
 
   /*@ public normal_behavior
-    @ ensures ((\result && (\forall int a, b;
+    @ ensures (\result <==> (\forall int a, b;
     @                               0 <= a && a < s.length && 0 <= b && b < s.length;
-    @                               a != b ==> s[a] != s[b]))
-    @      || (!\result && (\exists int a, b;
-    @                               0 <= a && a < s.length && 0 <= b && b < s.length;
-    @                               a != b && s[a] == s[b])));
+    @                               a != b ==> s[a] != s[b]));
     @*/
-  public boolean is_unique() {
+  public boolean is_unique2() {
     boolean b = true;
     int i = 0;
     /*@ loop_invariant 0 <= i && i <= n;
-      @ loop_invariant ((b && (\forall int a, b;
+      @ loop_invariant (b <==> (\forall int a, b;
       @                                0 <= a && a < i && 0 <= b && b < i;
-      @                                a != b ==> s[a] != s[b]))
-      @             || (!b && (\exists int a, b;
-      @                                0 <= a && a < i && 0 <= b && b < i;
-      @                                a != b && s[a] == s[b])));
+      @                                a != b ==> s[a] != s[b]));
       @ assignable \nothing;
       @ decreases n - i;
       @*/
