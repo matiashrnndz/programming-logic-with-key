@@ -3,7 +3,7 @@ package com.key;
 public class SumArray {
 
   /*@ public normal_behavior
-    @ requires arr != null && arr.length > 0;
+    @ requires arr != null;
     @ ensures \result == (\sum int k;
     @                          0 <= k && k < arr.length;
     @                          arr[k]);
