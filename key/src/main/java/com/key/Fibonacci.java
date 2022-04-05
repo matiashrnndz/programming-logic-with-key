@@ -15,16 +15,20 @@ public class Fibonacci {
     @ decreases n;
     @*/
   public int fib_iterative(int n) {
-    int a = 1, b = 1;
+    int a = 1;
+    int b = 1;
+    int i = 0;
     /*@ loop_invariant 0 <= i && i <= n;
       @ loop_invariant a == fib(i);
       @ loop_invariant b == fib(i+1);
       @ assignable \strictly_nothing;
       @ decreases n - i;
       @*/
-    for (int i = 0; i < n; i++) {
+    while (i != n) {
       int olda = a;
-      a = b; b = olda + b;
+      a = b;
+      b = olda + b;
+      i++;
     }
     return a;
   }
