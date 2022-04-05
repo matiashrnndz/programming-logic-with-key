@@ -9,8 +9,9 @@ public class SumArray {
     @                          arr[k]);
     @ assignable \nothing;
     @*/
-    private int sumArray(int[] arr) {
+    public int sumArray(int[] arr) {
       int res = 0;
+      int i = 0;
       /*@ loop_invariant 0 <= i && i <= arr.length;
         @ loop_invariant res == (\sum int k;
         @                             0 <= k && k < i;
@@ -18,8 +19,9 @@ public class SumArray {
         @ assignable \nothing;
         @ decreases arr.length-i;
         @*/
-      for(int i=0; i < arr.length; i++) {
+      while (i != arr.length) {
         res = res + arr[i];
+        i++;
       }
       return res;
     }

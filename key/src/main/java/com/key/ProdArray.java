@@ -9,7 +9,7 @@ public class ProdArray {
     @                              arr[k]);
     @ assignable \nothing;
     @*/
-  private int prodArray(int[] arr) {
+  public int prodArray(int[] arr) {
     int res = 1;
     /*@ loop_invariant 0 <= i && i <= arr.length;
       @ loop_invariant res == (\product int k;
