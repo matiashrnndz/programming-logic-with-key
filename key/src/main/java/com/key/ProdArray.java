@@ -11,6 +11,7 @@ public class ProdArray {
     @*/
   public int prodArray(int[] arr) {
     int res = 1;
+    int i = 0;
     /*@ loop_invariant 0 <= i && i <= arr.length;
       @ loop_invariant res == (\product int k;
       @                                 0 <= k && k < i;
@@ -18,8 +19,9 @@ public class ProdArray {
       @ assignable \nothing;
       @ decreases arr.length-i;
       @*/
-    for(int i=0; i < arr.length; i++) {
+    while (i != arr.length) {
       res = res * arr[i];
+      i++;
     }
     return res;
   }
