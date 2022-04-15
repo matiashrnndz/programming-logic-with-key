@@ -3,7 +3,14 @@ package com.key;
 public class QuickSortPartition {
 
   public static int[] arr;
-  
+  /*@ model \seq seqarr;
+    @ represents seqarr = \dl_array2seq(arr);
+    @*/
+  public static int l, r;
+  /*@ model \seq seqarr;
+    @ represents seqarr = \dl_array2seq(arr[l..r]);
+    @*/
+
   /*@ public normal_behavior
     @ requires arr != null
     @       && 0 <= l && l <= r && r < arr.length;
@@ -14,9 +21,10 @@ public class QuickSortPartition {
     @      && (\forall int k;
     @                  \result < k && k <= r;
     @                  arr[k] >= arr[\result]);
+    @ ensures \dl_seqPerm(seqarr, \old(seqarr));
     @ assignable arr[l..r];
     @*/
-  public static int partition(int l, int r) {
+  public static int partition() {
     
     int i = l;
     int j = r;
