@@ -7,8 +7,8 @@ public class SelectionSort {
     @ represents seqarr = \dl_array2seq(arr);
     @*/
 
-  /*@ model int n;
-    @ represents n = arr.length;
+  /*@ model int N;
+    @ represents N = arr.length;
     @*/
 
   /*@ public normal_behavior
@@ -19,36 +19,40 @@ public class SelectionSort {
     @ ensures \dl_seqPerm(seqarr, \old(seqarr));
     @*/
   public void selectionSort() {
-    /*@ loop_invariant 0 <= i && i < n;
+    int i = 0;
+    /*@ loop_invariant 0 <= i && i < N;
       @ loop_invariant (\forall int a, b;
-      @                         0 <= a && a < i && i <= b && b < n;
+      @                         0 <= a && a < i && i <= b && b < N;
       @                         arr[a] <= arr[b]);
       @ loop_invariant (\forall int a, b;
       @                         0 <= a && a <= b && b <= i;
       @                         arr[a] <= arr[b]);
       @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
       @ assignable arr[*];
-      @ decreases n-1-i;
+      @ decreases N-1-i;
       @*/
-    for (int i = 0; i < arr.length-1; i++) {
+    while(i != arr.length-1) {
+      int j = i + 1;
       int min_idx = i;
-      /*@ loop_invariant i < j && j <= n;
-        @ loop_invariant i <= min_idx && min_idx < n;
+      /*@ loop_invariant i < j && j <= N;
+        @ loop_invariant i <= min_idx && min_idx < N;
         @ loop_invariant (\forall int k;
         @                         i <= k && k < j;
         @                         arr[min_idx] <= arr[k]);
         @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
         @ assignable \strictly_nothing;
-        @ decreases n-j;
+        @ decreases N-j;
         @*/
-      for (int j = i+1; j < arr.length; j++) {
+      while(j != arr.length) {
         if (arr[j] < arr[min_idx]) {
           min_idx = j;
         }
+        j++;
       }
       int temp = arr[min_idx];
       arr[min_idx] = arr[i];
       arr[i] = temp;
+      i++;
     }
   }
 }
