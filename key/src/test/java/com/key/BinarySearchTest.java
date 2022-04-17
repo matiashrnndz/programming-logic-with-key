@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class BinarySearchTest {
 
-  private BinarySearch obj = new BinarySearch();
+  private BinarySearch2 obj = new BinarySearch2();
 
   @Test
   public void shouldFindKeyAtIndex0() {

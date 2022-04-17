@@ -6,36 +6,33 @@ public class BinarySearch {
     @ requires (\forall int a, b;
     @                   0 <= a && a <= b && b < arr.length;
     @                   arr[a] <= arr[b]);
-    @ ensures \result >= 0 ==>
-    @           \result < arr.length && arr[\result] == key;
-    @ ensures \result == -1 ==>
-    @           (\forall  int k;
-    @                     0 <= k && k < arr.length;
-    @                     arr[k] != key);
-    @ assignable \strictly_nothing;
+    @ ensures (\result == -1 ==>
+    @           (\forall int k;
+    @                    0 <= k && k < arr.length;
+    @                    arr[k] != key));
+    @ ensures (result >= 0 ==>
+    @           result < arr.length && arr[\result] == key); 
     @*/
-  public int binarySearch(int[] arr, int key) {
-    int low = 0, high = arr.length;
-    /*@ loop_invariant 0 <= low && low <= high && high <= arr.length;
+  public int binarySearch(int[] arr, int key){
+    int l = 0;
+    int r = arr.length;
+    int m = (l+r)/2;
+    /*@ loop_invariant 0 <= l && l <= r && r <= arr.length;
+      @ loop_invariant m == (l+r)/2;
       @ loop_invariant (\forall int k;
-      @                         0 <= k && k < low;
+      @                         0 <= k < l;
       @                         arr[k] != key);
       @ loop_invariant (\forall int k;
-      @                         high <= k && k < arr.length;
+      @                         r <= k < arr.length;
       @                         arr[k] != key);
       @ assignable \strictly_nothing;
-      @ decreases high - low;
+      @ decreasing r - l;
       @*/
-    while (low < high) {
-      int mid = (low + high) / 2;
-      if (key < arr[mid]) {
-        high = mid;
-      } else if (key > arr[mid]) {
-        low = mid + 1;
-      } else {
-        return mid;
-      }
+    while (l != r && key != arr[m]) {
+      if (key < arr[m]) r = m;
+      else l = m + 1;
+      m = (l+r)/2;
     }
-    return -1;
+    return (l == r ? -1 : m);
   }
 }
