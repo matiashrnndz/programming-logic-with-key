@@ -1,6 +1,6 @@
 package key;
 
-public class SumArray {
+public class SumArrayIterative {
 
   /*@ public normal_behavior
     @ requires arr != null;
@@ -9,7 +9,7 @@ public class SumArray {
     @                          arr[k]);
     @ assignable \nothing;
     @*/
-    public int sumArray(int[] arr) {
+    public int sumArrayIterative(int[] arr) {
       int res = 0;
       int i = 0;
       /*@ loop_invariant 0 <= i && i <= arr.length;

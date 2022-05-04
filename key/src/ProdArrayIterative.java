@@ -1,6 +1,6 @@
 package key;
 
-public class ProdArray {
+public class ProdArrayIterative {
 
   /*@ public normal_behavior
     @ requires arr != null;
@@ -9,7 +9,7 @@ public class ProdArray {
     @                              arr[k]);
     @ assignable \nothing;
     @*/
-  public int prodArray(int[] arr) {
+  public int prodArrayIterative(int[] arr) {
     int res = 1;
     int i = 0;
     /*@ loop_invariant 0 <= i && i <= arr.length;

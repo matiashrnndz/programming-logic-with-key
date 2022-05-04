@@ -13,11 +13,12 @@ public class FibonacciRec {
     @ requires n >= 0;
     @ ensures \result == fib(n);
     @ measured_by n;
+    @ assignable \strictly_nothing;
     @*/
-  public int fib_rec(int n) {
+  public int fib_recursive(int n) {
     if (n == 0 || n == 1) {
       return 1;
     }
-    return fib_rec(n-2) + fib_rec(n-1);
+    return fib_recursive(n-2) + fib_recursive(n-1);
   }
 }
