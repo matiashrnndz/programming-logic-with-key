@@ -1,26 +1,21 @@
-package com.key;
+package key;
 
-public class IsUnique2 {
-
-  public char[] s;
-  /*@ model int n;
-    @ represents n = s.length;
-    @*/
+public class IsUnique {
 
   /*@ public normal_behavior
     @ ensures (\result <==> (\forall int a, b;
     @                               0 <= a && a < s.length && 0 <= b && b < s.length;
     @                               a != b ==> s[a] != s[b]));
     @*/
-  public boolean is_unique2() {
+  public boolean is_unique(char[] s) {
     boolean b = true;
     int i = 0;
-    /*@ loop_invariant 0 <= i && i <= n;
+    /*@ loop_invariant 0 <= i && i <= s.length;
       @ loop_invariant (b <==> (\forall int a, b;
       @                                0 <= a && a < i && 0 <= b && b < i;
       @                                a != b ==> s[a] != s[b]));
       @ assignable \nothing;
-      @ decreases n - i;
+      @ decreases s.length - i;
       @*/
     while (b && i != s.length) {
       int j = 0;

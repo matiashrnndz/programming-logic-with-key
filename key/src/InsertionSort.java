@@ -1,27 +1,22 @@
-package com.key;
+package key;
 
 public class InsertionSort {
-
-  public int[] arr;
-  /*@ model \seq seqarr;
-    @ represents seqarr = \dl_array2seq(arr);
-    @*/
 
   /*@ public normal_behavior
     @ requires arr != null && arr.length > 0;
     @ ensures (\forall int a, b;
     @                  0 <= a && a <= b && b < arr.length;
     @                  arr[a] <= arr[b]);
-    @ ensures \dl_seqPerm(seqarr, \old(seqarr));
+    @ ensures \dl_seqPerm((\seq_def int k; 0; arr.length; arr[k]), \old((\seq_def int k; 0; arr.length; arr[k])));
     @ assignable arr[*];
     @*/
-  public void insertionSort() {
+  public void insertionSort(int[] arr) {
     int i = 1;
     /*@ loop_invariant 1 <= i && i <= arr.length;
       @ loop_invariant (\forall int a, b;
       @                         0 <= a && a <= b && b < arr.length && b < i;
       @                         arr[a] <= arr[b]);
-      @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
+      @ loop_invariant \dl_seqPerm((\seq_def int k; 0; arr.length; arr[k]), \old((\seq_def int k; 0; arr.length; arr[k])));
       @ assignable arr[*];
       @ decreases arr.length - i;
       @*/
@@ -31,7 +26,7 @@ public class InsertionSort {
         @ loop_invariant (\forall int a, b;
         @                         0 <= a && a < b && b <= i && b != j;
         @                         arr[a] <= arr[b]);
-        @ loop_invariant \dl_seqPerm(seqarr, \old(seqarr));
+        @ loop_invariant \dl_seqPerm((\seq_def int k; 0; arr.length; arr[k]), \old((\seq_def int k; 0; arr.length; arr[k])));
         @ assignable arr[*];
         @ decreases j;
         @*/

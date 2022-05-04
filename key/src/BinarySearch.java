@@ -1,4 +1,4 @@
-package com.key;
+package key;
 
 public class BinarySearch {
   

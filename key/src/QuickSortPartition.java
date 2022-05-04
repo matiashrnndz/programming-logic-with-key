@@ -1,15 +1,6 @@
-package com.key;
+package key;
 
 public class QuickSortPartition {
-
-  public static int[] arr;
-  /*@ model \seq seqarr;
-    @ represents seqarr = \dl_array2seq(arr);
-    @*/
-  public static int l, r;
-  /*@ model \seq seqarr;
-    @ represents seqarr = \dl_array2seq(arr[l..r]);
-    @*/
 
   /*@ public normal_behavior
     @ requires arr != null
@@ -21,11 +12,12 @@ public class QuickSortPartition {
     @      && (\forall int k;
     @                  \result < k && k <= r;
     @                  arr[k] >= arr[\result]);
-    @ ensures \dl_seqPerm(seqarr, \old(seqarr));
-    @ assignable arr[l..r];
+    @ ensures \dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr[k])));
+    @ ensures (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr[k]));
+    @ ensures (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr[k]));
     @*/
-  public static int partition() {
-    
+  public static int partition(int[] arr, int l, int r) {
+
     int i = l;
     int j = r;
     int pivot = arr[i];
@@ -38,6 +30,9 @@ public class QuickSortPartition {
       @                         j < k && k <= r;
       @                         arr[k] >= arr[i]);
       @ loop_invariant pivot == arr[i];
+      @ loop_invariant \dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr[k])));
+      @ loop_invariant (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr[k]));
+      @ loop_invariant (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr[k]));
       @ assignable arr[l..r];
       @ decreases j - i;
       @*/
