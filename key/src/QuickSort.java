@@ -1,20 +1,38 @@
 package key;
 
-public class QuickSortPartition {
+public class QuickSort {
+
+  /*@ public normal_behavior
+    @ requires arr != null
+    @       && 0 <= l && l <= arr.length
+    @       && -1 <= r && r < arr.length
+    @       && l <= r + 1;
+    @ ensures (\forall int a, b;
+    @                  0 <= l && l <= a && a <= b && b <= r && r < arr.length;
+    @                  arr[a] <= arr[b]);
+    @ measured_by r - l + 1;
+    @ assignable arr[l..r];
+    @*/
+  public static void quicksort(int[] arr, int l, int r) {
+    if (l < r) {
+      int p = partition(arr, l, r);
+      quicksort(arr, l, p-1);
+      quicksort(arr, p+1, r);
+    }
+  }
 
   /*@ public normal_behavior
     @ requires arr != null
     @       && 0 <= l && l <= r && r < arr.length;
-    @ ensures l <= \result && \result <= r 
+    @ ensures l <= \result && \result <= r
     @      && (\forall int k;
     @                  l <= k && k < \result;
     @                  arr[k] < arr[\result])
     @      && (\forall int k;
     @                  \result < k && k <= r;
     @                  arr[k] >= arr[\result]);
-    @ ensures \dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr[k])));
-    @ ensures (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr[k]));
-    @ ensures (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr[k]));
+    @ ensures (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr[k]))
+    @      && (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr[k]));
     @*/
   public static int partition(int[] arr, int l, int r) {
 
@@ -22,15 +40,14 @@ public class QuickSortPartition {
     int j = r;
     int pivot = arr[i];
 
-    /*@ loop_invariant l <= i && i <= j && j <= r;
+    /*@ loop_invariant pivot == arr[i];
+      @ loop_invariant l <= i && i <= j && j <= r;
       @ loop_invariant (\forall int k;
       @                         l <= k && k < i;
       @                         arr[k] < arr[i]);
       @ loop_invariant (\forall int k;
       @                         j < k && k <= r;
       @                         arr[k] >= arr[i]);
-      @ loop_invariant pivot == arr[i];
-      @ loop_invariant \dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr[k])));
       @ loop_invariant (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr[k]));
       @ loop_invariant (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr[k]));
       @ assignable arr[l..r];
