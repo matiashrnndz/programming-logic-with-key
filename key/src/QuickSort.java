@@ -7,10 +7,9 @@ public class QuickSort {
     @       && 0 <= l && l <= arr.length
     @       && -1 <= r && r < arr.length
     @       && l <= r + 1;
-    @ ensures (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr)[k])
-    @      && (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])))
-    @      && (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr)[k]);
+    @ ensures (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
     @ measured_by r - l + 1;
+    @ assignable arr[l..r];
     @*/
   public static void quicksort(int[] arr, int l, int r) {
     if (l < r) {
@@ -30,9 +29,8 @@ public class QuickSort {
     @      && (\forall int k;
     @                  \result < k && k <= r;
     @                  arr[k] >= arr[\result]);
-    @ ensures (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr)[k])
-    @      && (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])))
-    @      && (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr)[k]);
+    @ ensures (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
+    @ assignable arr[l..r];
     @*/
   public static int partition(int[] arr, int l, int r) {
 
@@ -48,9 +46,7 @@ public class QuickSort {
       @ loop_invariant (\forall int k;
       @                         j < k && k <= r;
       @                         arr[k] >= arr[i]);
-      @ loop_invariant (\seq_def int k; 0; l; arr[k]) == (\seq_def int k; 0; l; \old(arr)[k])
-      @             && (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])))
-      @             && (\seq_def int k; r+1; arr.length; arr[k]) == (\seq_def int k; r+1; arr.length; \old(arr)[k]);
+      @ loop_invariant (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
       @ assignable arr[l..r];
       @ decreases j - i;
       @*/
