@@ -3,10 +3,14 @@ package key;
 public class QuickSort {
 
   /*@ public normal_behavior
-    @ requires arr != null
+    @ requires arr != null 
+    @       && arr.length > 0
     @       && 0 <= l && l <= arr.length
     @       && -1 <= r && r < arr.length
     @       && l <= r + 1;
+    @ ensures (\forall int a, b;
+    @                  l <= a && a <= b && b <= r;
+    @                  arr[a] <= arr[b]);
     @ ensures (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
     @ measured_by r - l + 1;
     @ assignable arr[l..r];
