@@ -8,9 +8,7 @@ public class QuickSort {
     @       && 0 <= l && l <= arr.length
     @       && -1 <= r && r < arr.length
     @       && l <= r + 1;
-    @ ensures (\forall int a, b;
-    @                  l <= a && a <= b && b <= r;
-    @                  arr[a] <= arr[b]);
+    @ ensures (\forall int a, b; l <= a && a <= b && b <= r; arr[a] <= arr[b]);
     @ ensures (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
     @ measured_by r - l + 1;
     @ assignable arr[l..r];
@@ -27,12 +25,8 @@ public class QuickSort {
     @ requires arr != null
     @       && 0 <= l && l <= r && r < arr.length;
     @ ensures l <= \result && \result <= r
-    @      && (\forall int k;
-    @                  l <= k && k < \result;
-    @                  arr[k] < arr[\result])
-    @      && (\forall int k;
-    @                  \result < k && k <= r;
-    @                  arr[k] >= arr[\result]);
+    @      && (\forall int k; l <= k && k < \result; arr[k] < arr[\result])
+    @      && (\forall int k; \result < k && k <= r; arr[k] >= arr[\result]);
     @ ensures (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
     @ assignable arr[l..r];
     @*/
@@ -44,12 +38,8 @@ public class QuickSort {
 
     /*@ loop_invariant pivot == arr[i];
       @ loop_invariant l <= i && i <= j && j <= r;
-      @ loop_invariant (\forall int k;
-      @                         l <= k && k < i;
-      @                         arr[k] < arr[i]);
-      @ loop_invariant (\forall int k;
-      @                         j < k && k <= r;
-      @                         arr[k] >= arr[i]);
+      @ loop_invariant (\forall int k; l <= k && k < i; arr[k] < arr[i]);
+      @ loop_invariant (\forall int k; j < k && k <= r; arr[k] >= arr[i]);
       @ loop_invariant (\dl_seqPerm((\seq_def int k; l; r+1; arr[k]), (\seq_def int k; l; r+1; \old(arr)[k])));
       @ assignable arr[l..r];
       @ decreases j - i;
