@@ -34,23 +34,25 @@ public class Quicksort {
   }
 
   /*@ public normal_behavior
-    @ requires array != null
+    @ requires array != null;
     @ requires 0 <= l && l <= r && r < array.length;
     @ requires l > 0 ==> (\forall int i; l <= i && i <= r; array[l-1] <= array[i]);
     @ requires r < array.length-1 ==> (\forall int i; l <= i && i <= r; array[i] <= array[r+1]);
-    @ ensures l <= \result && \result <= r
-    @ ensures (\forall int k; l <= k && k < \result; array[k] < array[\result])
+    @ ensures l <= \result && \result <= r;
+    @ ensures (\forall int k; l <= k && k < \result; array[k] < array[\result]);
     @ ensures (\forall int k; \result < k && k <= r; array[k] >= array[\result]);
     @ ensures l > 0 ==> (\forall int i; l <= i && i <= r;  array[l-1] <= array[i]);
     @ ensures r < array.length-1 ==> (\forall int i; l <= i && i <= r; array[i] <= array[r+1]);
     @ ensures \dl_seqPerm(\dl_array2seq(array), \old(\dl_array2seq(array)));
+    @ ensures (\forall int k; 0 <= k && k < l; array[k] == \old(array[k]));
+    @ ensures (\forall int k; r < k && k < array.length; array[k] == \old(array[k]));
     @ assignable array[l..r];
     @*/
   private static int split(int[] array, int l, int r) {
 
     int i = l;
     int j = r;
-    int pivot = array[i];
+    int pivot = array[l];
 
     /*@ loop_invariant pivot == array[i];
       @ loop_invariant l <= i && i <= j && j <= r;
@@ -59,6 +61,8 @@ public class Quicksort {
       @ loop_invariant l > 0 ==> (\forall int i; l <= i && i <= r; array[l-1] <= array[i]);
       @ loop_invariant r < array.length-1 ==> (\forall int i; l <= i && i <= r; array[i] <= array[r+1]);
       @ loop_invariant \dl_seqPerm(\dl_array2seq(array), \old(\dl_array2seq(array)));
+      @ loop_invariant (\forall int k; 0 <= k && k < l; array[k] == \old(array[k]));
+      @ loop_invariant (\forall int k; r < k && k < array.length; array[k] == \old(array[k]));
       @ assignable array[l..r];
       @ decreases j - i;
       @*/
